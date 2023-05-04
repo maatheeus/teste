@@ -1,0 +1,15 @@
+{
+    "name": "root/application",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "M4TH3U5 H3NR1QU3"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,30 @@
+version: "3.1"
+services:
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: teste-php-fpm
+      working_dir: /application
+      command: php -S 0.0.0.0:8080
+      volumes:
+        - ./project/teste:/application
+      ports:
+        - "8080:8080"
+      links:
+        - postgres
+      environment:
+        - DB_HOST=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=teste
+    postgres:
+      image: postgres:10.6-alpine
+      container_name: teste-postgres
+      ports:
+        - "5432:5432"
+      working_dir: /application
+      volumes:
+          - ./postgres-data:/var/lib/posgresql/data
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=teste
